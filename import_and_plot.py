@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import csv
+import math
 
 '''
 This is ultimately intended to read in csv files, convert them to
@@ -22,6 +23,7 @@ def numpy2pyplot(csvdata):
     ycol = 'total_gross'
     xdata = csvdata[xcol]
     ydata = csvdata[ycol]
+    #ydata = [math.log(val) for val in csvdata[ycol]]
     plt.ylabel(ycol)
     plt.xlabel(xcol)
     return [xdata,ydata]
@@ -35,4 +37,6 @@ for fname in filenames:
     
 plt.legend(loc='lower right')
 plt.axis([1,300,100000000,1000000000])
+#plt.axis([1,50,0,120000000])
+#plt.yscale('log')
 plt.show()
